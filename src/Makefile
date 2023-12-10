@@ -28,7 +28,7 @@ ifndef CFLAGS
  endif
 CFLAGS +=-Wall -Wstrict-prototypes -fno-omit-frame-pointer -Wstrict-aliasing -funwind-tables -Wmissing-prototypes -Wshadow -Wextra -Wno-unused-parameter -Wno-implicit-fallthrough
 endif
-override CFLAGS +=-Iinclude
+override CFLAGS +=-Iinclude -I/home/rock/code/build/openssl/openssl-3.2.0/include
 override CFLAGS += -DBASE_FILE_NAME='"$(notdir $<)"'
 override CFLAGS += $(EXTRA_CFLAGS)
 ifdef VER
@@ -40,7 +40,7 @@ override CXXFLAGS +=-Iinclude
 
 # ldflags
 ifeq ($(STATIC), yes)
- override LDFLAGS += -lssl -lcrypto -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -ldl -static
+ override LDFLAGS += -lssl -lcrypto -Wl,--whole-archive -lpthread -Wl,--no-whole-archive -ldl -static -L/home/rock/code/build/openssl/openssl-3.2.0
 else
  override LDFLAGS += -lssl -lcrypto -lpthread -ldl
 endif
